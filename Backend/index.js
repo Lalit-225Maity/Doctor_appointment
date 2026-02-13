@@ -1,0 +1,14 @@
+const express=require('express');
+const dotenv=require('dotenv');
+const app=express();
+app.use(express.json());
+dotenv.config();
+const Database=require('./Database/db');
+Database();
+const DoctorDetails=require('./Routes/Doctors');
+app.use('/api',DoctorDetails);
+const port=process.env.PORT;
+app.listen(port,()=>{
+    console.log(`server running at ${port}`);
+    
+})

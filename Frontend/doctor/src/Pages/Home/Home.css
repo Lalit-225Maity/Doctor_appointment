@@ -1,0 +1,158 @@
+.home {
+    width: 100%;
+    min-height: 100vh;
+  
+    display: flex;
+    margin-top: 170px;
+   
+}
+
+ 
+.search-box {
+    width: 100%;
+     height: fit-content;
+   background: linear-gradient(180deg, #e6f7fa, #ffffff);
+    padding: 50px 40px;
+   
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+ 
+.search-box .typewriter {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    min-height: 40px;  
+     
+    margin-bottom: 30px;
+}
+
+ .search {
+    display: flex;
+    justify-content: center;
+    gap: 15px;    
+    margin-bottom: 25px;
+}
+
+.search input {
+    width: 60%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;    
+    outline: none;
+    font-size: 14px;
+}
+.search input::placeholder {
+    color: #888;         
+    font-size: 14px;    
+    font-weight: 400;    
+    opacity: 1;          
+}
+.search button {
+    padding: 12px 40px;
+    border: none;
+    background-color: #00bcd4;
+    color: white;
+    border-radius: 10px;   
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.search button:hover {
+    background-color: #0097a7;
+}
+
+
+ 
+.topics {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.topics p {
+    background: #f1f1f1;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.topics p:first-child {
+    background: none;
+    font-weight: 600;
+    cursor: default;
+}
+
+.topics p:not(:first-child):hover {
+    background: #00bcd4;
+    color: white;
+}
+
+/* Discover Section */
+.discover {
+    margin-top: 40px;
+    padding: 20px;
+    background: #e6f7fa;
+    border-radius: 10px;
+     
+}
+
+.discover p {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.discover button {
+    padding: 10px 25px;
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.discover button:hover {
+    background-color: #0097a7;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+
+    .search-box {
+        padding: 30px 20px;
+    }
+
+    .search-box span {
+        font-size: 22px;
+    }
+
+    .search {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search input {
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .search button {
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .topics {
+        gap: 8px;
+    }
+}
