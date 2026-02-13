@@ -20,15 +20,19 @@ const Doctors = new Schema({
         required: true,
         type: String
     },
-    email: {
+    experience: {
         required: true,
         type: String
     },
     photo: {
         required: true,
         type: String
+    },
+    treats: {
+        required: true,
+        type: [String]
     }
 
 })
-const Doctor=model("Doctor",Doctors);
-module.exports=Doctor;
+const Doctor = model("Doctor", Doctors);
+module.exports = Doctor;

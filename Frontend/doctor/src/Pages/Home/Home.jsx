@@ -1,9 +1,35 @@
 import React from 'react'
 import { Typewriter } from 'react-simple-typewriter'
-import './Home.css'
-import { useEffect, useState } from 'react'
+import './Home.css' 
+import { useForm } from 'react-hook-form'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
+    const navigate=useNavigate();
+    
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { isSubmitting }
+    } = useForm();
+    const SelectDoc = async (data) => {
+        await new Promise((resolve, reject) => {
+            setTimeout(async () => {
+                try {
+                    const response = await axios.get(`/api/fethdoctor?keyword=${data.keyword}`);
+                    console.log(response.data.docDetail);
+                    navigate('/doctors',{state:{doc:response.data.docDetail}})
+                    resolve("success");
 
+                } catch (error) {
+                    console.log(error.message);
+
+                }
+            }, 3000);
+        })
+        reset();
+    }
     return (
         <div className='home'>
             <div className="search-box">
@@ -18,10 +44,10 @@ const Home = () => {
                         delaySpeed={4000}
                     />
                 </div>
-                <div className="search">
-                    <input type="text" placeholder='search for any health keyword' />
-                    <button >search</button>
-                </div>
+                <form className="search" onSubmit={handleSubmit(SelectDoc)} >
+                    <input type="text" placeholder='search for any health keyword' {...register('keyword')} />
+                    <button type="submit">{isSubmitting ? "searching...." : "search"}</button>
+                </form>
                 <div className="topics">
                     <p>Trending Topics:</p>
                     <p>Celiac Disease</p>
