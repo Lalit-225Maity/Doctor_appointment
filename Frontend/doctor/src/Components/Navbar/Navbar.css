@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .navbar {
-    width: 100%;
+    width: 100vw;
     height: 170px;
     background: #ffffff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    
-    position: fixed;    
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; 
+    z-index: 1000;
 }
+
 .nav-one {
     height: 80px;
     padding: 0 60px;
@@ -30,23 +32,31 @@
     height: 45px;
     cursor: pointer;
 }
+
 .nav-components {
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
-.nav-components p {
-    font-size: 15px;
+.nav-components a {
+    text-decoration: none;
+
     color: #333;
+    font-size: 15px;
     cursor: pointer;
-    transition: 0.3s;
+
 }
 
-.nav-components p:hover {
+.green {
+    color: #333;
+}
+
+.nav-components a:hover {
     color: #00bcd4;
 }
-.nav-one .nav-components button {
+
+.nav-components button {
     padding: 10px 20px;
     background: #00bcd4;
     border: none;
@@ -62,7 +72,10 @@
     transform: translateY(-2px);
 }
 
- 
+.nav-components .red {
+    color: red;
+}
+
 .nav-two {
     height: 90px;
     padding: 0 60px;
@@ -70,13 +83,14 @@
     align-items: center;
     justify-content: space-between;
     background: #f9fbfd;
-     
+
 }
+
 .book h4,
 .treat-patient h4,
 .question h4,
 .surgery h4,
-.feed h4{
+.feed h4 {
     font-weight: 500;
 }
 
@@ -86,7 +100,7 @@
 .surgery,
 .feed {
     display: flex;
-     
+
     padding: 10px;
     justify-content: center;
     align-items: center;
