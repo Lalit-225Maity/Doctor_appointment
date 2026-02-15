@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Typewriter } from 'react-simple-typewriter'
-import './Home.css' 
+import './Home.css'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 const Home = () => {
-    const navigate=useNavigate();
-    
+    const navigate = useNavigate();
+    const [tick, settick] = useState(false);
     const {
         register,
         reset,
+        setValue,
         handleSubmit,
         formState: { isSubmitting }
     } = useForm();
@@ -19,7 +20,7 @@ const Home = () => {
                 try {
                     const response = await axios.get(`/api/fethdoctor?keyword=${data.keyword}`);
                     console.log(response.data.docDetail);
-                    navigate('/doctors',{state:{doc:response.data.docDetail}})
+                    navigate('/doctors', { state: { doc: response.data.docDetail } })
                     resolve("success");
 
                 } catch (error) {
@@ -30,8 +31,12 @@ const Home = () => {
         })
         reset();
     }
+    const HandleSelect=(value)=>{
+        setValue("keyword",value);
+        handleSubmit(SelectDoc)()
+    }
     return (
-        <div className='home'>
+        <div className='home' onClick={(e)=>{ settick(false)}} >
             <div className="search-box">
                 <div className="typewriter">
                     <Typewriter
@@ -45,9 +50,26 @@ const Home = () => {
                     />
                 </div>
                 <form className="search" onSubmit={handleSubmit(SelectDoc)} >
-                    <input type="text" placeholder='search for any health keyword' {...register('keyword')} />
+                    <input type="text" placeholder='search for any health keyword' {...register('keyword')} onClick={(e) => {e.stopPropagation(); settick(true) }} />
                     <button type="submit">{isSubmitting ? "searching...." : "search"}</button>
+                     {tick && (
+                    <div className="search-desease">
+                        <p onClick={() => { HandleSelect("Acne/Pimples") }}>Acne/Pimples</p>
+                        <p onClick={() => { HandleSelect("Hair Fall") }}>Hair Fall</p>
+                        <p onClick={() => { HandleSelect("Premature Ejaculation")}}>Premature Ejaculation</p>
+                        <p onClick={() => { HandleSelect("Erection Problems") }}>Erection Problems</p>
+                        <p onClick={() => {  HandleSelect("Erection Problems") }}>Weight Loss</p>
+                        <p onClick={() => { HandleSelect("Depression") }}>Depression</p>
+                        <p onClick={() => { HandleSelect("Irregular Periods") }}>Irregular Periods</p>
+                        <p onClick={() => { HandleSelect("Pregnancy") }}>Pregnancy</p>
+                        <p onClick={() => { HandleSelect("Knee Pain") }}>Knee Pain</p>
+                        <p onClick={() => { HandleSelect("Childcare") }}>Childcare</p>
+                        <p onClick={() => {  HandleSelect("Diabetes")}}>Diabetes</p>
+                    </div>
+                )}
+                     
                 </form>
+                 
                 <div className="topics">
                     <p>Trending Topics:</p>
                     <p>Celiac Disease</p>

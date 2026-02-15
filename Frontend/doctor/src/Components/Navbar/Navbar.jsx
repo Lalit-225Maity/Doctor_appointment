@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 const Navbar = () => {
+    const [username, setusername] = useState('')
     const {
         register,
         setValue,
@@ -12,6 +13,13 @@ const Navbar = () => {
     } = useForm();
     const navigate = useNavigate();
     const [book, setbook] = useState(false);
+    useEffect(() => {
+       const User=localStorage.getItem("Name");
+       if(User){
+        setusername(JSON.parse(User));
+       }
+    }, [])
+    
     return (
         <div className='navbar'>
             <div className="nav-one">
@@ -20,7 +28,7 @@ const Navbar = () => {
                     <NavLink ><p>Get the App</p></NavLink>
                     <NavLink > <p>For Doctors</p></NavLink>
                     <NavLink to='/free' className={(e) => { return e.isActive ? "red" : "green" }} id='free'><button>Book Free Appointment</button></NavLink>
-                    <NavLink to='/login' className={(e) => { return e.isActive ? "red" : "green" }} ><p>Login/Signup</p></NavLink>
+                    <NavLink to='/login' className={(e) => { return e.isActive ? "red" : "green" }} ><p>{username?username:"Login/Signup"}</p></NavLink>
                 </div>
             </div>
             <div className="nav-two">
@@ -53,7 +61,6 @@ const Navbar = () => {
                             <span onClick={() => { setbook(false);reset() }}>X</span>
                         </div>
                         <div className="appointment-form">
-
                             <form >
                                 <input type="text" placeholder='Speciality/Symptom/Treatment/Doctor/Clinic' {...register("Symptom")} />
                                 <input type="submit" value="search" />

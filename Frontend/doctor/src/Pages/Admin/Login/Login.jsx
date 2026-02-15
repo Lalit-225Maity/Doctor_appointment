@@ -18,8 +18,10 @@ const Login = () => {
         setTimeout(async() => {
           try {
             const response=await axios.post('/api/login',data);
-            console.log(response.data);
+            console.log(response.data.user.Name);
             resolve("Success")
+            const Name=response.data.user.Name;
+            localStorage.setItem("Name",JSON.stringify(Name));
             navigate('/')
           } catch (error) {
             console.log(error.response.data.message);
@@ -28,6 +30,17 @@ const Login = () => {
         }, 3000);
       })
       reset();
+    }
+    const Logout=async()=>{
+      try {
+        const response2=await axios.post('/api/logout');
+        localStorage.removeItem("Name");
+        console.log(response2.data);
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
   return (
     <div className='login'>
@@ -40,6 +53,7 @@ const Login = () => {
       <input type="submit" value={isSubmitting?"Loging....":"Login"} />
     </form>
      <NavLink to='/signup'>Create Account</NavLink>
+     <p onClick={()=>{Logout()}}>Logout</p>
     </div>
   )
 }
