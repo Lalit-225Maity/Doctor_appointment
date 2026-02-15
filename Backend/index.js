@@ -7,6 +7,8 @@ const Database=require('./Database/db');
 Database();
 const DoctorDetails=require('./Routes/Doctors');
 app.use('/api',DoctorDetails);
+const User=require('./Routes/Customer');
+app.use('/api',User);
 const port=process.env.PORT;
 app.listen(port,()=>{
     console.log(`server running at ${port}`);

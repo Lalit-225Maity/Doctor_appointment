@@ -67,13 +67,19 @@
     transition: 0.3s;
 }
 
+.nav-components a.red button {
+    background: #F8843F;
+    color: #ffff;
+}
+
+
 .nav-components button:hover {
     background: #0097a7;
     transform: translateY(-2px);
 }
 
 .nav-components .red {
-    color: red;
+    color: #F8843F;
 }
 
 .nav-two {
@@ -83,6 +89,7 @@
     align-items: center;
     justify-content: space-between;
     background: #f9fbfd;
+
 
 }
 
@@ -100,7 +107,7 @@
 .surgery,
 .feed {
     display: flex;
-
+    cursor: pointer;
     padding: 10px;
     justify-content: center;
     align-items: center;
@@ -126,4 +133,236 @@
 .surgery:hover {
     background-color: #e6f7fa;
     transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 70px;
+    }
+
+     .nav-one{
+         
+         height: 80px;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+     }
+
+    .nav-one img {
+        height: 25px;
+    }
+
+    .book img,
+    .treat-patient img,
+    .question img,
+    .surgery img,
+    .feed img {
+        height: 10px;
+        width: 10px;
+    }
+
+    .book,
+    .treat-patient,
+    .question,
+    .surgery,
+    .feed {
+        display: flex;
+        cursor: pointer;
+        padding: 2px;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        border-radius: 10px;
+
+    }
+
+    .book h4,
+    .treat-patient h4,
+    .question h4,
+    .surgery h4,
+    .feed h4 {
+        font-weight: 500;
+        font-size: 10px;
+    }
+
+    .nav-components {
+        height: fit-content;
+        gap: 10px;
+    }
+
+    .nav-components a {
+        font-size: 10px;
+     
+        width:80%;
+    }
+
+    .nav-components button {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+
+    .nav-two {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 15px 20px;
+        gap: 15px;
+        justify-content: flex-start;
+    }
+
+    .book,
+    .treat-patient,
+    .question,
+    .surgery,
+    .feed {
+        width: 30%;
+    }
+
+}
+.home-book-appointment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top */
+}
+ 
+.appoint-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  position: relative;
+}
+
+/* Header styling */
+.book-appoint {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.book-appoint h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.book-appoint span {
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.book-appoint span:hover {
+  color: #000;
+}
+
+/* Form styling */
+.appointment-form form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.appointment-form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.appointment-form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s;
+}
+
+.appointment-form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Select city section */
+.select-city {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.select-city input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+ 
+.appointment-form h5 {
+  margin: 20px 0 10px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+ 
+.appoint-disease {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.appoint-disease p {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.appoint-disease p:hover {
+  background-color: #e9ecef;
+  border-color: #007bff;
+}
+
+ 
+@media (max-width: 600px) {
+  .appoint-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .appointment-form form {
+    flex-direction: column;
+  }
+
+  .select-city {
+    flex-direction: column;
+  }
+
+  .appoint-disease {
+    justify-content: center;
+  }
 }

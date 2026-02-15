@@ -1,0 +1,83 @@
+.login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #f5f7fa, #e4f2f7);
+    padding: 20px;
+}
+
+/* Login Card */
+.login form {
+    width: 360px;
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login h4 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Labels */
+.login label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Inputs */
+.login input[type="email"],
+.login input[type="password"] {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.login input:focus {
+    border-color: #00bcd4;
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.1);
+}
+
+/* Submit Button */
+.login input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px;
+    background: #00bcd4;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login input[type="submit"]:hover {
+    background: #0097a7;
+    transform: translateY(-2px);
+}
+
+/* Signup Link */
+.login a {
+    margin-top: 15px;
+    text-decoration: none;
+    color: #00bcd4;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
