@@ -25,8 +25,8 @@ const Navbar = () => {
             <div className="nav-one">
                 <img src="https://assets.lybrate.com/f_auto,c_limit,w_256,q_auto/imgs/product/logos/Lybrate-Logo.png" alt="Error" onClick={() => { navigate('/') }} />
                 <div className="nav-components">
-                    <NavLink ><p>Get the App</p></NavLink>
-                    <NavLink > <p>For Doctors</p></NavLink>
+                    <NavLink to='/getapp' className={(e) => { return e.isActive ? "red" : "green" }} ><p>Get the App</p></NavLink>
+                    <NavLink to='/fordoctor' className={(e) => { return e.isActive ? "red" : "green" }} > <p>For Doctors</p></NavLink>
                     <NavLink to='/free' className={(e) => { return e.isActive ? "red" : "green" }} id='free'><button>Book Free Appointment</button></NavLink>
                     <NavLink to='/login' className={(e) => { return e.isActive ? "red" : "green" }} ><p>{username?username:"Login/Signup"}</p></NavLink>
                 </div>

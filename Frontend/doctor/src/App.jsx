@@ -8,6 +8,8 @@ import Login from './Pages/Admin/Login/Login';
 import FreeAppoint from './Pages/FreeAppointment/FreeAppoint';
 import Signup from './Pages/Admin/Signup/Signup';
 import { useLocation } from 'react-router-dom';
+import ForDoctor from './Pages/ForDoctor/ForDoctor';
+import GetApp from './Pages/GetApp/GetApp';
 const App = () => {
   const location = useLocation();
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/free' element={<FreeAppoint />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/fordoctor' element={<ForDoctor />} />
+        <Route path='/getapp' element={<GetApp />} />
       </Routes>
     </div>
   )

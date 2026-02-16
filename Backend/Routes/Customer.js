@@ -52,8 +52,8 @@ router.post('/login', async (req, res) => {
                     user: Check
                 })
             } else {
-                res.status(500).json({
-                    message: err
+                 res.status(500).json({
+                    message: "Invalid Password"
                 })
             }
         })
