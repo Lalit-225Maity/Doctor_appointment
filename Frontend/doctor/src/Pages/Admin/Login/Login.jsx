@@ -37,15 +37,7 @@ const Login = () => {
     })
     reset();
   }
-  const Logout = async () => {
-    try {
-      const response2 = await axios.post('/api/logout');
-      localStorage.removeItem("Name");
-      console.log(response2.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  
   return (
     <div className='login'>
       {userLogin && (
@@ -63,7 +55,7 @@ const Login = () => {
       </form>
       {loginerr&&<p style={{color:"red"}}>{loginerr}</p>}
       <NavLink to='/signup'>Create Account</NavLink>
-      <p onClick={() => { Logout() }}>Logout</p>
+       
     </div>
   )
 }

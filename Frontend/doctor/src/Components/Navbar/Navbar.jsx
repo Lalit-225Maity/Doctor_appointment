@@ -3,7 +3,9 @@ import './Navbar.css'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 const Navbar = () => {
+    const [userhover, setuserhover] = useState(false);
     const [username, setusername] = useState('')
     const {
         register,
@@ -14,12 +16,21 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [book, setbook] = useState(false);
     useEffect(() => {
-       const User=localStorage.getItem("Name");
-       if(User){
-        setusername(JSON.parse(User));
-       }
+        const User = localStorage.getItem("Name");
+        if (User) {
+            setusername(JSON.parse(User));
+        }
     }, [])
-    
+    const Logout = async () => {
+        try {
+            const response2 = await axios.post('/api/logout');
+            localStorage.removeItem("Name");
+            console.log(response2.data);
+            navigate('/login');
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <div className='navbar'>
             <div className="nav-one">
@@ -28,8 +39,33 @@ const Navbar = () => {
                     <NavLink to='/getapp' className={(e) => { return e.isActive ? "red" : "green" }} ><p>Get the App</p></NavLink>
                     <NavLink to='/fordoctor' className={(e) => { return e.isActive ? "red" : "green" }} > <p>For Doctors</p></NavLink>
                     <NavLink to='/free' className={(e) => { return e.isActive ? "red" : "green" }} id='free'><button>Book Free Appointment</button></NavLink>
-                    <NavLink to='/login' className={(e) => { return e.isActive ? "red" : "green" }} ><p>{username?username:"Login/Signup"}</p></NavLink>
+                    {username ? (
+                        <div className='userlogin' onMouseEnter={() => { setuserhover(true) }} onMouseLeave={() => { setuserhover(false) }}>
+                            <img src="/user (3).png" alt="" />
+                            <span>{username}</span>
+                            {userhover && (
+                                <div className='userlog'>
+                                    <p> Orders</p>
+                                    <p> Buy Again</p>
+                                    <p>Redeem LybrateCash</p>
+                                    <p>My Offers</p>
+                                    <p>My Questions</p>
+                                    <p>My Appointments</p>
+                                    <p>My Packages</p>
+                                    <p>My Lab Reports</p>
+                                    <p>My Orders</p>
+                                    <p>Health Feed</p>
+                                    <p>Browse Health Categories</p>
+                                    <p onClick={() => { Logout() }}> Logout</p>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <NavLink to='/login' className={(e) => { return e.isActive ? "red" : "green" }} >Login/Signup</NavLink>
+
+                    )}
                 </div>
+
             </div>
             <div className="nav-two">
                 <div className="book" onClick={() => { setbook(true) }}>
@@ -58,7 +94,7 @@ const Navbar = () => {
                     <div className="appoint-container">
                         <div className="book-appoint">
                             <h3>Book Appointment</h3>
-                            <span onClick={() => { setbook(false);reset() }}>X</span>
+                            <span onClick={() => { setbook(false); reset() }}>X</span>
                         </div>
                         <div className="appointment-form">
                             <form >

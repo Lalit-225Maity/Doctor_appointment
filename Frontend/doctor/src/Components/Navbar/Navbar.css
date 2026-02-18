@@ -32,11 +32,56 @@
     height: 45px;
     cursor: pointer;
 }
+.userlogin {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    position: relative;
+    
+}
 
+.userlogin img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+ 
+/* Dropdown Box */
+.userlog {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 220px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    padding: 10px 0;
+    z-index: 2000;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Dropdown Items */
+.userlog p {
+    padding: 10px 18px;
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+    transition: 0.2s;
+}
+
+.userlog p:hover {
+    background-color: #f5f7fa;
+    color: #00bcd4;
+}
 .nav-components {
     display: flex;
     align-items: center;
     gap: 30px;
+     
 }
 
 .nav-components a {

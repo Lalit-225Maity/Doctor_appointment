@@ -20,7 +20,7 @@ const Home = () => {
                 try {
                     const response = await axios.get(`/api/fethdoctor?keyword=${data.keyword}`);
                     console.log(response.data.docDetail);
-                    navigate('/doctors', { state: { doc: response.data.docDetail } })
+                    navigate('/doctors', { state: { doc: response.data.docDetail,department:data.keyword } })
                     resolve("success");
 
                 } catch (error) {
@@ -54,16 +54,16 @@ const Home = () => {
                     <button type="submit">{isSubmitting ? "searching...." : "search"}</button>
                      {tick && (
                     <div className="search-desease">
-                        <p onClick={() => { HandleSelect("Acne/Pimples") }}>Acne/Pimples</p>
-                        <p onClick={() => { HandleSelect("Hair Fall") }}>Hair Fall</p>
-                        <p onClick={() => { HandleSelect("Premature Ejaculation")}}>Premature Ejaculation</p>
-                        <p onClick={() => { HandleSelect("Erection Problems") }}>Erection Problems</p>
-                        <p onClick={() => {  HandleSelect("Erection Problems") }}>Weight Loss</p>
+                        <p onClick={() => { HandleSelect("Acne") }}>Acne</p>
+                        <p onClick={() => { HandleSelect("Cancer") }}>Cancer</p>
+                        <p onClick={() => { HandleSelect("Child Infection")}}>Child Infection</p>
+                        <p onClick={() => { HandleSelect("Skin Infection") }}>Skin Infection</p>
+                        <p onClick={() => {  HandleSelect("Fever") }}>Fever</p>
                         <p onClick={() => { HandleSelect("Depression") }}>Depression</p>
-                        <p onClick={() => { HandleSelect("Irregular Periods") }}>Irregular Periods</p>
+                        <p onClick={() => { HandleSelect("PCOS") }}>PCOS</p>
                         <p onClick={() => { HandleSelect("Pregnancy") }}>Pregnancy</p>
                         <p onClick={() => { HandleSelect("Knee Pain") }}>Knee Pain</p>
-                        <p onClick={() => { HandleSelect("Childcare") }}>Childcare</p>
+                        <p onClick={() => { HandleSelect("Heart Failure") }}>Heart Failure</p>
                         <p onClick={() => {  HandleSelect("Diabetes")}}>Diabetes</p>
                     </div>
                 )}

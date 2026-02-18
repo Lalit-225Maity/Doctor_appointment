@@ -16,6 +16,15 @@ const Doctors = new Schema({
         required: true,
         type: String
     },
+    day: {
+
+        required: true,
+        type: String
+    },
+    timing: {
+        required: true,
+        type: String
+    },
     phone: {
         required: true,
         type: String

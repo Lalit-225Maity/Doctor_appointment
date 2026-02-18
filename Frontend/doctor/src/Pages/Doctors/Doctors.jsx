@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const Doctors = () => {
     const navigate = useNavigate();
     const { state } = useLocation();
-    const { doc } = state || {};
+    const { doc,department } = state || {};
 
     return (
         <div className='doctors'>
@@ -25,7 +25,7 @@ const Doctors = () => {
                             </div>
                             <div className="contact-info">  <h5>Contact Info : {i.phone}</h5><button className='call'><img src="/phone.png" alt="" />CALL</button></div>
                             <div className="appoint-doc">
-                                <button onClick={() => { navigate('/appointment') }}>Book Appointment</button>
+                                <button onClick={() => { navigate('/appointment',{state:{doctorDetails:i,department:department}}) }}>Book Appointment</button>
                                 <button>Review</button>
                             </div>
                         </div>
