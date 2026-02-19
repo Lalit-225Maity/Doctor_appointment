@@ -3,36 +3,37 @@ import './Appointment.css'
 import { useLocation } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+ 
+import { useNavigate } from 'react-router-dom';
 const Appointment = () => {
+  const navigate=useNavigate();
   const [startdate, setstartdate] = useState();
   const { state } = useLocation();
   const { doctorDetails, department } = state || {};
-
   const daymap = {
-      Sunday: 0,
-      Monday: 1,
-      Tuesday: 2,
-      Wednesday: 3,
-      Thursday: 4,
-      Friday: 5,
-      Saturday: 6
-    }
-  
+    Sunday: 0,
+    Monday: 1,
+    Tuesday: 2,
+    Wednesday: 3,
+    Thursday: 4,
+    Friday: 5,
+    Saturday: 6
+  }
+
   return (
     <div className='appointment'>
       <img src="https://www.peerlesshospital.com/images/appointment-banner.webp" alt="Error" />
       <div className="doc-appoiont-schedule">
         <div className="schedule-appointment">
-          <div className="circle">1</div>
+          <div className="circle-1">1</div>
           <p>Schedule Appointment</p>
         </div>
         <div className="patient">
-          <div className="circle">2</div>
+          <div className="circle-2">2</div>
           <p>Patient Details</p>
         </div>
         <div className="confirmation">
-          <div className="circle">3</div>
+          <div className="circle-3">3</div>
           <p>Confirmation</p>
         </div>
 
@@ -55,7 +56,7 @@ const Appointment = () => {
           </div>
           <div className="your-doctor">
             <h4>Your Doctor</h4>
-            <input type="text" value={doctorDetails.name} />
+            <input type="text" value={doctorDetails.name} readOnly />
           </div>
           <div className="appointment-date">
             <h4>Appointment Date</h4>
@@ -66,11 +67,13 @@ const Appointment = () => {
               dateFormat="dd/MM/yyyy"
               minDate={new Date()}
               placeholderText='Select the Date'
-
             />
           </div>
         </div>
+        <button onClick={() => {navigate('/personalinfo')}}>Next</button>
       </div>
+    
+      
 
     </div>
   )

@@ -10,6 +10,7 @@ import Signup from './Pages/Admin/Signup/Signup';
 import { useLocation } from 'react-router-dom';
 import ForDoctor from './Pages/ForDoctor/ForDoctor';
 import GetApp from './Pages/GetApp/GetApp';
+import PersonalDetails from './Pages/Appointment/PersonalDetails';
 const App = () => {
   const location = useLocation();
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/fordoctor' element={<ForDoctor />} />
         <Route path='/getapp' element={<GetApp />} />
+        <Route path='/personalinfo' element={<PersonalDetails/>}/>
       </Routes>
     </div>
   )
