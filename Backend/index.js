@@ -11,6 +11,8 @@ const User=require('./Routes/Customer');
 app.use('/api',User);
 const Appointment=require('./Routes/Doctorappointment');
 app.use('/api',Appointment);
+const payment=require('./Routes/Payment');
+app.use('/api',payment);
 const port=process.env.PORT;
 app.listen(port,()=>{
     console.log(`server running at ${port}`);
