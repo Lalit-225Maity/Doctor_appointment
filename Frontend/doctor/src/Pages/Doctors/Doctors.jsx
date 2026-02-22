@@ -12,7 +12,8 @@ const Doctors = () => {
             <div className="doc-sidebar">
 
             </div>
-            <div className="doctor-appointment-details">
+            {doc&&doc.length>0?(
+                 <div className="doctor-appointment-details">
                 {doc.map((i) => (
                     <div className='doc-details'>
                         <div className="doc-img"> <img src={i.photo} alt="" /></div>
@@ -34,6 +35,7 @@ const Doctors = () => {
 
                 ))}
             </div>
+            ):(<p>Doctor not found</p>)}
         </div>
     )
 }

@@ -10,7 +10,10 @@ import Signup from './Pages/Admin/Signup/Signup';
 import { useLocation } from 'react-router-dom';
 import ForDoctor from './Pages/ForDoctor/ForDoctor';
 import GetApp from './Pages/GetApp/GetApp';
+import Confirmation from './Pages/Appointment/Confirmation/Confirmation';
 import PersonalDetails from './Pages/Appointment/PersonalDetails';
+import MyAppointment from './Pages/MyAppointment/MyAppointment';
+import Payment from './Payment/Payment';
 const App = () => {
   const location = useLocation();
   return (
@@ -25,7 +28,10 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/fordoctor' element={<ForDoctor />} />
         <Route path='/getapp' element={<GetApp />} />
-        <Route path='/personalinfo' element={<PersonalDetails/>}/>
+        <Route path='/personalinfo' element={<PersonalDetails />} />
+        <Route path='/confirm' element={<Confirmation />} />
+        <Route path='/myappointment' element={<MyAppointment />} />
+        <Route path='/payment' element={<Payment/>}/>
       </Routes>
     </div>
   )

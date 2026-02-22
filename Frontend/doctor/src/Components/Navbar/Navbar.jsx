@@ -10,8 +10,8 @@ const Navbar = () => {
     const {
         register,
         setValue,
-        reset
-
+        reset,
+        formState:{isSubmitting}
     } = useForm();
     const navigate = useNavigate();
     const [book, setbook] = useState(false);
@@ -94,12 +94,12 @@ const Navbar = () => {
                     <div className="appoint-container">
                         <div className="book-appoint">
                             <h3>Book Appointment</h3>
-                            <span onClick={() => { setbook(false); reset() }}>X</span>
+                            <span onClick={() => { setbook(false); reset() }}> <img src="/close.png" alt="Error" /></span>
                         </div>
                         <div className="appointment-form">
                             <form >
                                 <input type="text" placeholder='Speciality/Symptom/Treatment/Doctor/Clinic' {...register("Symptom")} />
-                                <input type="submit" value="search" />
+                                 <button type="submit" >{isSubmitting?"searching....":"search"}</button>
                             </form>
 
                             <div className="select-city">

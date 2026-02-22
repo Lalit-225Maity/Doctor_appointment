@@ -70,7 +70,7 @@ const Appointment = () => {
             />
           </div>
         </div>
-        <button onClick={() => {navigate('/personalinfo')}}>Next</button>
+        <button  className='button' onClick={() => {navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails}})}}>Next</button>
       </div>
     
       

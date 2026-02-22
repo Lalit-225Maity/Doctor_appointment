@@ -82,7 +82,7 @@
     
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
-.e-appointment button {
+.button {
      
     margin-top: 30px;
     padding: 14px 30px;
@@ -203,7 +203,7 @@
     color: #fff !important;
 }
 
-/* Responsive */
+ 
 @media (max-width: 768px) {
     .doc-appoiont-schedule {
         flex-direction: column;
