@@ -24,7 +24,7 @@ const Doctors = () => {
                             <input type="radio"   checked  readOnly/>
                             <label> Apollo Hospitals in {i.city}</label>
                             </div>
-                            <div className="contact-info">  <h5>Contact Info : {i.phone}</h5><button className='call'><img src="/phone.png" alt="" />CALL</button></div>
+                            <div className="contact-info">  <p>Contact Info : {i.phone}</p> <button className='call'><img src="/phone.png" alt="" />CALL</button></div>
                             <div className="appoint-doc">
                                 <button onClick={() => { navigate('/appointment',{state:{doctorDetails:i,department:department}}) }}>Book Appointment</button>
                                 <button>Review</button>
