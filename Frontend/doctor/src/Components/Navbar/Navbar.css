@@ -172,91 +172,7 @@
     transform: translateY(-3px);
 }
 
-@media (max-width: 768px) {
-
-    .navbar {
-        height: 70px;
-    }
-
-     .nav-one{
-         
-         height: 80px;
-    padding: 0 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-     }
-
-    .nav-one img {
-        height: 25px;
-    }
-
-    .book img,
-    .treat-patient img,
-    .question img,
-    .surgery img,
-    .feed img {
-        height: 10px;
-        width: 10px;
-    }
-
-    .book,
-    .treat-patient,
-    .question,
-    .surgery,
-    .feed {
-        display: flex;
-        cursor: pointer;
-        padding: 2px;
-        justify-content: center;
-        align-items: center;
-        gap: 2px;
-        border-radius: 10px;
-
-    }
-
-    .book h4,
-    .treat-patient h4,
-    .question h4,
-    .surgery h4,
-    .feed h4 {
-        font-weight: 500;
-        font-size: 10px;
-    }
-
-    .nav-components {
-        height: fit-content;
-        gap: 10px;
-    }
-
-    .nav-components a {
-        font-size: 10px;
-     
-        width:80%;
-    }
-
-    .nav-components button {
-        padding: 6px 14px;
-        font-size: 13px;
-    }
-
-    .nav-two {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 15px 20px;
-        gap: 15px;
-        justify-content: flex-start;
-    }
-
-    .book,
-    .treat-patient,
-    .question,
-    .surgery,
-    .feed {
-        width: 30%;
-    }
-
-}
+ 
 
 .home-book-appointment {
   position: fixed;
@@ -412,17 +328,173 @@
 }
  
 
-@media (max-width: 600px) {
+ /* ===============================
+   TABLET RESPONSIVE (992px)
+================================= */
+@media (max-width: 992px) {
+
+  .nav-one {
+    padding: 0 30px;
+  }
+
+  .nav-two {
+    padding: 0 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .book,
+  .treat-patient,
+  .question,
+  .surgery,
+  .feed {
+    width: 30%;
+  }
+
+}
+
+
+/* ===============================
+   MOBILE RESPONSIVE (768px)
+================================= */
+@media (max-width: 768px) {
+
+  .navbar {
+    height: auto;
+    position: relative;
+  }
+
+  .nav-one {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .nav-components {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-components a {
+    font-size: 13px;
+  }
+
+  .nav-components button {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .nav-two {
+    padding: 15px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .book,
+  .treat-patient,
+  .question,
+  .surgery,
+  .feed {
+    width: 45%;
+    justify-content: flex-start;
+  }
+
+  .book img,
+  .treat-patient img,
+  .question img,
+  .surgery img,
+  .feed img {
+    height: 25px;
+    width: 25px;
+  }
+
+  .book h4,
+  .treat-patient h4,
+  .question h4,
+  .surgery h4,
+  .feed h4 {
+    font-size: 13px;
+  }
+
+}
+
+
+/* ===============================
+   SMALL MOBILE (480px)
+================================= */
+@media (max-width: 480px) {
+
+  .nav-components {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-components a {
+    font-size: 12px;
+  }
+
+  .nav-two {
+    justify-content: space-between;
+  }
+
+  .book,
+  .treat-patient,
+  .question,
+  .surgery,
+  .feed {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .book img,
+  .treat-patient img,
+  .question img,
+  .surgery img,
+  .feed img {
+    height: 22px;
+    width: 22px;
+  }
+
+  .book h4,
+  .treat-patient h4,
+  .question h4,
+  .surgery h4,
+  .feed h4 {
+    font-size: 12px;
+  }
+
+}@media (max-width: 600px) {
+
+  .home-book-appointment {
+    padding: 10px;
+  }
+
+  .home-book-appointment .appoint-container {
+    width: 100%;
+    max-height: 95vh;
+    padding: 15px;
+    border-radius: 10px;
+  }
 
   .home-book-appointment .appointment-form form {
     flex-direction: column;
+  }
+
+  .home-book-appointment .appointment-form button {
+    width: 100%;
   }
 
   .home-book-appointment .select-city {
     flex-direction: column;
   }
 
-  .home-book-appointment .appoint-container {
-    padding: 18px;
+  .home-book-appointment .appoint-disease p {
+    font-size: 12px;
+    padding: 6px 10px;
   }
+
 }

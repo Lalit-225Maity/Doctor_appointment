@@ -165,36 +165,86 @@
     background-color: #0097a7;
 }
 
-/* =========================
-   Responsive
-========================= */
+@media (max-width: 992px) {
+
+     .home {
+        margin-top: 0px;
+         
+    }
+
+    .search-box .typewriter {
+        font-size: 24px;
+    }
+
+    .discover p {
+        font-size: 15px;
+    }
+}
+
+/* ===== Mobile ===== */
 
 @media (max-width: 768px) {
 
-    .search-box {
-        padding: 30px 20px;
+      .home {
+        margin-top: 0px;
     }
 
-    .search-box span {
-        font-size: 22px;
+    .search-box {
+        padding: 40px 20px;
+    }
+
+    .search-box .typewriter {
+        font-size: 20px;
     }
 
     .search {
         flex-direction: column;
-        gap: 10px;
     }
 
     .search input {
         width: 100%;
-        border-radius: 30px;
     }
 
     .search button {
         width: 100%;
-        border-radius: 30px;
     }
 
     .topics {
         gap: 8px;
+    }
+
+    .topics p {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .discover {
+        padding: 20px;
+    }
+
+    .discover p {
+        font-size: 14px;
+    }
+
+    .discover button {
+        width: 100%;
+    }
+}
+
+/* ===== Small Mobile ===== */
+
+@media (max-width: 480px) {
+
+    .search-box .typewriter {
+        font-size: 17px;
+    }
+
+    .topics p {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    .discover {
+        padding: 15px;
     }
 }
