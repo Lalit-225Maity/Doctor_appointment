@@ -7,7 +7,6 @@
 .expiry-field .react-datepicker {
     padding-top: 10px !important;
 }
-/* Main Container */
 .payment {
   width: 100%;
   margin-top: 170px;
@@ -16,36 +15,39 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Top Banner */
-.payment > img {
+ 
+
+.payment-process img {
   width: 100%;
   height: 120px;
   object-fit: cover;
+  border-radius: 6px 6px 0 0;
 }
 
-/* Main Box */
+ 
+
 .payment-process {
   width: 95%;
   margin: 25px auto;
   background: #e6e6e6;
   padding: 25px;
-  border-radius: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 .payment-process p {
   font-size: 18px;
   color: #444;
   margin-bottom: 20px;
-  text-transform: lowercase;
 }
 
-/* Layout */
+ 
 .payment-types {
   display: flex;
-  gap: 30px;
+  gap: 40px;
+  align-items: flex-start;
 }
-
-/* ================= LEFT SIDE ================= */
+ 
 
 .payment-methods {
   width: 220px;
@@ -56,20 +58,18 @@
 
 .payment-methods button {
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 5px;
   border: none;
   font-size: 15px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-/* Active */
 .pink {
   background-color: #66b266;
   color: white;
 }
 
-/* Inactive */
 .orange {
   background-color: #dcdcdc;
   color: #333;
@@ -79,105 +79,130 @@
   opacity: 0.9;
 }
 
-/* ================= RIGHT SIDE FORM ================= */
+ 
 
 .payment-types form {
-  width: 30%;
-  background: #ffffff;
+  width: 60%;
+  background: #f2f2f2;
   padding: 30px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #dcdcdc;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
+ 
 
-/* Labels */
 .payment-types form label {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   color: #333;
+  margin-bottom: 5px;
 }
 
-/* Inputs */
-.payment-types form input[type="number"]{
-   width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  outline: none;
-  transition: 0.2s;
-}
+ 
+
+.payment-types form input[type="number"],
 .payment-types form input[type="text"] {
   width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d6d6d6;
+  background: #f7f7f7;
+  font-size: 15px;
   outline: none;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 .payment-types form input:focus {
-  border-color: #4CAF50;
+  border-color: #999;
+  background: #ffffff;
 }
 
-/* ================= EXPIRY FIELD ================= */
+/* ================= CARD WRAPPER ================= */
+
+.card-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  margin-top: 5px;
+}
+
+/* ================= EXPIRY FIELDS ================= */
+
+.card-wrapper .expiry-field {
+  flex: 1;
+}
 
 .expiry-field {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 100%;
+  align-items: center;
 }
 
-.expiry-field .react-datepicker-wrapper {
-  width: 100%;
-}
-
+ 
 .expiry-field input {
   width: 100%;
-  padding: 10px;
-  padding-right: 45px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px;
+  padding-right: 35px;
+  border-radius: 6px;
+  border: 1px solid #d6d6d6;
+  background: #f7f7f7;
+  font-size: 15px;
 }
 
-/* Dropdown Icon */
+ 
+ 
 .expiry-field img {
   position: absolute;
   right: 10px;
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
   pointer-events: none;
+}
+
+/* ================= CVV ================= */
+
+.card-wrapper .cvv {
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cvv input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d6d6d6;
+  background: #f7f7f7;
+  font-size: 15px;
 }
 
 /* ================= SUBMIT BUTTON ================= */
 
 .payment-types form input[type="submit"] {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  background-color: #66b266;
+  margin-top: 25px;
+  padding: 13px;
+  background: #66b266;
   color: white;
   border: none;
+  border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .payment-types form input[type="submit"]:hover {
-  background-color: #4ca64c;
+  background: #4ca64c;
 }
-
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
+
   .payment-types {
     flex-direction: column;
+    gap: 20px;
   }
 
   .payment-methods {
@@ -188,5 +213,17 @@
 
   .payment-methods button {
     flex: 1 1 45%;
+  }
+
+  .payment-types form {
+    width: 100%;
+  }
+
+  .card-wrapper {
+    flex-direction: column;
+  }
+
+  .card-wrapper .cvv {
+    width: 100%;
   }
 }

@@ -28,7 +28,7 @@
     margin-bottom: 30px;
 }
 
-/* ===== Overlay Background ===== */
+ 
 .popup-search {
     position: fixed;
     inset: 0;
@@ -40,7 +40,7 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* ===== Popup Box ===== */
+ 
 .popup-box {
     background: #ffffff;
     padding: 30px 40px;
@@ -50,7 +50,7 @@
     animation: scaleUp 0.3s ease;
 }
 
-/* ===== Text ===== */
+ 
 .popup-box p {
     margin-top: 15px;
     font-size: 15px;
