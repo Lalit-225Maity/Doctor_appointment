@@ -1,33 +1,32 @@
 const express = require('express');
 const router = express.Router();
-router.post('/pay', (req, res) => {
+const Payment = require('../Models/Payment')
+const bcrypt=require('bcrypt')
+router.post('/pay', async (req, res) => {
     try {
-        const { Card_Number, Expairy_Month, Expairy_Year, pay, CVV } = req.body;
-        if (pay === 'Credit Card') {
-            if (!Card_Number || !Expairy_Month || !Expairy_Year) {
-                return res.status(500).json({
-                    message: "All  fields are required"
-                })
-            }
-            if (!/^\d{16}$/.test(Card_Number)) {
-                return res.status(401).json({
-                    message: "Card must be 16 digits"
-                })
-            }
-            if (CVV.length !== 3) {
-                return res.status(401).json({
-                    message: "CVV must be 3 digit"
-                })
-            }
+        const { UserID, PaymentMethod, Debit_Card, UPI_ID,DebitCard_Password } = req.body;
+        let Payment_Process;
+        if (PaymentMethod === 'UPI') {
+            Payment_Process = new Payment({ PaymentMethod, UPI_ID, UserID })
 
         }
+        if(PaymentMethod==='Debit Card'){
+            const salt=await bcrypt.genSalt(10);
+            const Hash=await bcrypt.hash(DebitCard_Password,salt);
+            Payment_Process = new Payment({ PaymentMethod,Debit_Card, UserID,DebitCard_Password:Hash  });
+           
+
+        }
+        await Payment_Process.save();
         res.status(200).json({
             success: true,
-            message: "card is valid"
+            message: "Payment is complete",
+            Payment_Process: Payment_Process
         })
-
     } catch (error) {
-
+        res.status(500).json({
+            message: error.message
+        })
     }
 })
 module.exports = router
