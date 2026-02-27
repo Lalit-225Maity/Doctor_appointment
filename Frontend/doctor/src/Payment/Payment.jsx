@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Payment.css'
 import { useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
@@ -8,6 +8,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios'
 
 const Payment = () => {
+    useEffect(() => {
+       console.log(Price);
+       
+    }, [])
+    
     const {
         register,
         handleSubmit,
@@ -17,34 +22,120 @@ const Payment = () => {
     const { state } = useLocation();
     const { PatientName, Mobile, DoctorName, Department, Price } = state || {};
     const [UPI, setUPI] = useState(false);
+    const [expairy, setexpairy] = useState();
     const [card, setcard] = useState(false);
-    const [open, setopen] = useState(true);
-    const OpenPayment=()=>{
-        
+    const [method, setmethod] = useState();
+    const [expyear, setexpyear] = useState();
+    const OpenPayment = async (data) => {
+        await new Promise((resolve, reject) => {
+            setTimeout(async () => {
+                try {
+                    const newData = {
+                        ...data,
+                        PaymentMethod: method,
+                        UserID: PatientName
+                    }
+                    const CardData = {
+                        ...data,
+                        PaymentMethod: method,
+                        UserID: PatientName
+                    }
+                    if (method === 'UPI') {
+                        const response = await axios.post('/api/pay', newData);
+                        console.log(response.data);
+                        resolve("success");
+                    }
+                    if (method === 'Debit Card') {
+                        const response = await axios.post('/api/pay', CardData);
+                        console.log(response.data);
+                        resolve("success");
+                    }
+
+
+                } catch (error) {
+                    console.log(error.response.data.message);
+
+                }
+
+
+            }, 3000);
+        })
     }
     return (
         <div className="payment">
-            <div className="payment-sidebar">
-            <button  onClick={()=>{OpenPayment()}}><img src="/back.png" alt="Error" /></button>
-                <div className="hospital-payment">
-                     <img src="https://cashfree-checkoutcartimages-prod.cashfree.com/1203420_logo_zcstlr" alt="Error" />
-                     <h4>PEERLESS HOSPITEX HOSPITAL AND RESEARCH CENTER LIM...</h4>
-                     <span>₹{Price}</span>
-                </div>
-            </div>
             <div className="select-payment">
-                {open && (
-                    <div className="pament-methods">
-                        <p>Payment Options for +91 8436789520</p>
-                        <button className={UPI ? "green" : "pink"} onClick={() => { setUPI(true); setcard(false) }}><img src="/upi.svg" alt="" />Pay by UPI ID</button>
-                        <button className={card ? "green" : "pink"} onClick={() => { setUPI(false); setcard(true) }}><img src="/credit-card.png" alt="Error" /> Card</button>
-                    </div>
-                )}
-                {UPI && (
-                    <div className="upi-payment">
+                <div className="pament-methods">
+                    <p>Payment Options for +91 8436789520</p>
+                    <button className={UPI ? "blue" : "pink"} onClick={() => { setUPI(true); setcard(false); setmethod("UPI") }}><img src="/upi.svg" alt="" /><p>Pay by UPI ID</p></button>
+                    <button className={card ? "blue" : "pink"} onClick={() => { setUPI(false); setcard(true); setmethod("Debit Card") }}><img src="/credit-card.png" alt="Error" /><p>Card</p></button>
+                </div>
+                <div className="payments">
+                    {UPI && (
+                        <div className="upi">
+                            <form onSubmit={handleSubmit(OpenPayment)}>
+                                <label>UPI ID</label>
+                                <input type="text" {...register("UPI_ID")} />
+                                <p>I agree with the Privacy Policy by proceeding with this payment</p>
+                                <h4>INR {Price}(Total Amount Payable)</h4>
+                                <button type="submit">Make Payment</button>
+                                {isSubmitting && (
+                                    <div className='makepayment'>
+                                        <div className="loading-payment">
+                                            <div className="payment-process-loading"></div>
+                                            <p>Please wait...</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </form>
+                        </div>
+                    )}
+                    {card && (
+                        <div className="cards">
+                            <form onSubmit={handleSubmit(OpenPayment)}>
+                                <label>Card Number</label>
+                                <input type="text" {...register("Debit_Card")} />
+                                <label>Expairy</label>
+                                <div className="exp-cvv">
+                                    <DatePicker
+                                        selected={expairy}
+                                        onChange={(e) => { setexpairy(e) }}
+                                        showMonthYearPicker
+                                        dateFormat='MM'
+                                        placeholderText='Month'
+                                    />
+                                    <DatePicker
+                                        selected={expyear}
+                                        onChange={(e) => { setexpyear(e) }}
+                                        showYearPicker
+                                        dateFormat='yyyy'
+                                        minDate={new Date()}
+                                        maxDate={new Date(2040, 0, 0)}
+                                        placeholderText='Month'
+                                    />
+                                     
+                                </div>
+                                <label>CVV</label>
+                                    <input type="text" {...register("CVV")} />
+                                <label>Debit Card Password</label>
+                                <input type="password" {...register("DebitCard_Password")} />
+                                <p>I agree with the Privacy Policy by proceeding with this payment</p>
+                                <h4>INR {Price}(Total Amount Payable)</h4>
+                                <button type="submit">Make Payment</button>
+                                {isSubmitting && (
+                                    <div className='makepayment'>
+                                        <div className="loading-payment">
+                                            <div className="payment-process-loading"></div>
+                                            <p>Please wait...</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </form>
+                        </div>
+                    )}
+                </div>
 
-                    </div>
-                )}
+
+
             </div>
         </div>
     )
