@@ -2,17 +2,19 @@ import React, { useEffect } from 'react'
 import './Payment.css'
 import { useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios'
 
 const Payment = () => {
+    const navigate = useNavigate();
     useEffect(() => {
-       console.log(Price);
-       
+        console.log(Price);
+
     }, [])
-    
+
     const {
         register,
         handleSubmit,
@@ -20,7 +22,7 @@ const Payment = () => {
         formState: { isSubmitting }
     } = useForm();
     const { state } = useLocation();
-    const { PatientName, Mobile, DoctorName, Department, Price } = state || {};
+    const { PatientName, Mobile, DoctorName, Department, Price, Date } = state || {};
     const [UPI, setUPI] = useState(false);
     const [expairy, setexpairy] = useState();
     const [card, setcard] = useState(false);
@@ -43,6 +45,8 @@ const Payment = () => {
                     if (method === 'UPI') {
                         const response = await axios.post('/api/pay', newData);
                         console.log(response.data);
+                        navigate('/myappointment', { state: { Mobile, DoctorName, Department, newData, Date,PatientName } })
+
                         resolve("success");
                     }
                     if (method === 'Debit Card') {
@@ -110,16 +114,16 @@ const Payment = () => {
                                         dateFormat='yyyy'
                                         minDate={new Date()}
                                         maxDate={new Date(2040, 0, 0)}
-                                        placeholderText='Month'
+                                        placeholderText='Year'
                                     />
-                                     
+
                                 </div>
                                 <label>CVV</label>
-                                    <input type="text" {...register("CVV")} />
+                                <input type="text" {...register("CVV")} />
                                 <label>Debit Card Password</label>
                                 <input type="password" {...register("DebitCard_Password")} />
                                 <p>I agree with the Privacy Policy by proceeding with this payment</p>
-                                <h4>INR {Price}(Total Amount Payable)</h4>
+                                <h4>INR {Price} (Total Amount Payable)</h4>
                                 <button type="submit">Make Payment</button>
                                 {isSubmitting && (
                                     <div className='makepayment'>
