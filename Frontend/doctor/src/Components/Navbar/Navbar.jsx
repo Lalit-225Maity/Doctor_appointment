@@ -25,6 +25,7 @@ const Navbar = () => {
         try {
             const response2 = await axios.post('/api/logout');
             localStorage.removeItem("Name");
+            localStorage.removeItem("Email_ID");
             console.log(response2.data);
             navigate('/login');
         } catch (error) {
@@ -50,7 +51,7 @@ const Navbar = () => {
                                     <p>Redeem LybrateCash</p>
                                     <p>My Offers</p>
                                     <p>My Questions</p>
-                                    <p>My Appointments</p>
+                                    <p onClick={()=>{navigate('/myappointment')}}>My Appointments</p>
                                     <p>My Packages</p>
                                     <p>My Lab Reports</p>
                                     <p>My Orders</p>

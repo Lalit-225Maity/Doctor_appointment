@@ -5,11 +5,20 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
  
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 const Appointment = () => {
   const navigate=useNavigate();
+  const [em, setem] = useState();
   const [startdate, setstartdate] = useState();
   const { state } = useLocation();
   const { doctorDetails, department } = state || {};
+  useEffect(() => {
+    const Name=localStorage.getItem("Name");
+    if(Name){
+      setem(JSON.parse(Name));
+    }
+  }, [])
+  
   const daymap = {
     Sunday: 0,
     Monday: 1,
@@ -70,7 +79,11 @@ const Appointment = () => {
             />
           </div>
         </div>
-        <button  className='button' onClick={() => {navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails}})}}>Next</button>
+        <button  className='button' onClick={() => {if(em){navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails}})}
+        else{
+          navigate('/login')
+        }
+        }}>Next</button>
       </div>
     
       

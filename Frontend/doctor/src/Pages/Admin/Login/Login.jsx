@@ -26,23 +26,25 @@ const Login = () => {
           resolve("Success");
 
           const Name = response.data.user.Name;
+          const Email = response.data.user.Email;
           localStorage.setItem("Name", JSON.stringify(Name));
+          localStorage.setItem("Email_ID", JSON.stringify(Email));
           setTimeout(() => {
             navigate('/');
           }, 2000);
         } catch (error) {
-           setloginerr(error.response.data.message);
+          setloginerr(error.response.data.message);
         }
       }, 3000);
     })
     reset();
   }
-  
+
   return (
     <div className='login'>
       {userLogin && (
         <div className="hello">
-          <h4>wlecome User</h4>
+          <h4>welcome User</h4>
         </div>
       )}
       <h4>Login</h4>
@@ -53,9 +55,9 @@ const Login = () => {
         <input type='password' placeholder='Password' {...register('Password')} />
         <input type="submit" value={isSubmitting ? "Loging...." : "Login"} />
       </form>
-      {loginerr&&<p style={{color:"red"}}>{loginerr}</p>}
+      {loginerr && <p style={{ color: "red" }}>{loginerr}</p>}
       <NavLink to='/signup'>Create Account</NavLink>
-       
+
     </div>
   )
 }

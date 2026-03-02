@@ -2,7 +2,9 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import './Signup.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const Signup = () => {
+  const navigate=useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,6 +18,7 @@ const Signup = () => {
           const response = await axios.post('/api/create', data);
           console.log(response.data);
           resolve("success");
+          navigate('/login');
 
         } catch (error) {
           console.log(error.message);

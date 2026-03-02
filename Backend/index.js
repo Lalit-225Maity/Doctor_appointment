@@ -9,8 +9,8 @@ const DoctorDetails=require('./Routes/Doctors');
 app.use('/api',DoctorDetails);
 const User=require('./Routes/Customer');
 app.use('/api',User);
-const payment=require('./Routes/Payment');
-app.use('/api',payment);
+const Appointment=require('./Routes/Appointment');
+app.use('/api',Appointment);
 const port=process.env.PORT;
 app.listen(port,()=>{
     console.log(`server running at ${port}`);

@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useLocation } from 'react-router-dom'
+import './Myappointment.css'
 const MyAppointment = () => {
     const [booking, setbooking] = useState([]);
-    const { state } = useLocation();
-    const { UserID } = state || {};
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get(`/api/appointmentdetails?UserCheck=${UserID}`);
-                setbooking(response.data.Book)
+                const useremail = localStorage.getItem("Email_ID");
+                const user = JSON.parse(useremail);
+                console.log(user);
+                
+                if (user) {
+                    const response = await axios.get(`/api/appointmentdetails?UserCheck=${user}`);
+                    console.log(response.data.Book);
+                    setbooking(response.data.Book)
+                }
+                else {
+
+                }
+
+
+
 
             } catch (error) {
 
@@ -19,7 +30,12 @@ const MyAppointment = () => {
 
     return (
         <div className='myappointment'>
+            {booking.map((i) => (
+                <span>
+                    <p>{i.DoctorName}</p>
+                </span>
 
+            ))}
         </div>
     )
 }

@@ -14,6 +14,7 @@ import Confirmation from './Pages/Appointment/Confirmation/Confirmation';
 import PersonalDetails from './Pages/Appointment/PersonalDetails';
 import MyAppointment from './Pages/MyAppointment/MyAppointment';
 import Payment from './Payment/Payment';
+import Footer from './Components/Footer/Footer';
 const App = () => {
   const location = useLocation();
   return (
@@ -31,8 +32,9 @@ const App = () => {
         <Route path='/personalinfo' element={<PersonalDetails />} />
         <Route path='/confirm' element={<Confirmation />} />
         <Route path='/myappointment' element={<MyAppointment />} />
-        <Route path='/payment' element={<Payment/>}/>
+        <Route path='/payment' element={<Payment />} />
       </Routes>
+      {location.pathname !== '/login' && location.pathname !== '/signup' && <Footer />}
     </div>
   )
 }

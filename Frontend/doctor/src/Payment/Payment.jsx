@@ -54,8 +54,9 @@ const Payment = () => {
                     if (method === 'UPI') {
                         const response = await axios.post('/api/pay', newData);
                         console.log(response.data);
+                        localStorage.setItem("Email_ID", JSON.stringify(email))
                         if (response.data.success) {
-                            navigate('/myappointment', { state: { email } })
+                            navigate('/myappointment')
                         }
 
                         resolve("success");
@@ -63,6 +64,9 @@ const Payment = () => {
                     if (method === 'Debit Card') {
                         const response = await axios.post('/api/pay', CardData);
                         console.log(response.data);
+                        const useremail2 = localStorage.getItem("Email_ID");
+                        if (useremail2) { localStorage.setItem("Email_ID", JSON.stringify(email)) }
+                        localStorage.setItem("Email_ID", JSON.stringify(email))
                         if (response.data.success) {
                             navigate('/myappointment', { state: { email } })
                         }
@@ -98,7 +102,7 @@ const Payment = () => {
                                     <div className='makepayment'>
                                         <div className="loading-payment">
                                             <div className="payment-process-loading"></div>
-                                            <p>Please wait...</p>
+                                            <p>Processing.....</p>
                                         </div>
                                     </div>
                                 )}
@@ -121,15 +125,16 @@ const Payment = () => {
                                             placeholderText='Month'
                                         />
                                     </span>
-                                    <span>     <DatePicker
-                                        selected={expyear}
-                                        onChange={(e) => { setexpyear(e) }}
-                                        showYearPicker
-                                        dateFormat='yyyy'
-                                        minDate={new Date()}
-                                        maxDate={new Date(2040, 0, 0)}
-                                        placeholderText='Year'
-                                    /></span>
+                                    <span>
+                                        <DatePicker
+                                            selected={expyear}
+                                            onChange={(e) => { setexpyear(e) }}
+                                            showYearPicker
+                                            dateFormat='yyyy'
+                                            minDate={new Date()}
+                                            maxDate={new Date(2040, 0, 0)}
+                                            placeholderText='Year'
+                                        /></span>
 
                                 </div>
                                 <label>CVV</label>
