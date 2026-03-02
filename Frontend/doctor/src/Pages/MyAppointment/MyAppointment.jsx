@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 const MyAppointment = () => {
-    const{state}=useLocation();
-    const{ Mobile, DoctorName, Department, newData, Date}=state||{};
+    const [booking, setbooking] = useState([]);
+    const { state } = useLocation();
+    const { UserID } = state || {};
     useEffect(() => {
-      console.log(Mobile);
-      console.log(Department);
-      console.log(newData);
-      console.log(Date);
-      
-      
-      
-      
+        (async () => {
+            try {
+                const response = await axios.get(`/api/appointmentdetails?UserCheck=${UserID}`);
+                setbooking(response.data.Book)
+
+            } catch (error) {
+
+            }
+        })()
     }, [])
-    
+
     return (
         <div className='myappointment'>
 

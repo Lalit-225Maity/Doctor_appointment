@@ -54,11 +54,11 @@ const Confirmation = () => {
                     <p>{Price}.00/-</p>
                 </div>
             </div>
-            <button onClick={() => { navigate('/payment',{state:{PatientName:appointment.FirstName+appointment.LastName,Mobile:appointment.MobileNumber,DoctorName:doctorDetails.name,Department:department,Price:Price,Date:appointmentDate.toLocaleDateString("en-IN", {
+            <button onClick={() => { navigate('/payment',{state:{PatientName:appointment.FirstName+appointment.LastName,Mobile:appointment.MobileNumber,DoctorName:doctorDetails.name,Department:department,Price:Price,Appoint_Date:appointmentDate.toLocaleDateString("en-IN", {
                         day: "2-digit",
                         month: "long",
                         year: "numeric",
-                    })}})}}>Confirm and Pay</button>
+                    }),email:appointment.Patient_Email_ID}})}}>Confirm and Pay</button>
         </div>
     )
 }

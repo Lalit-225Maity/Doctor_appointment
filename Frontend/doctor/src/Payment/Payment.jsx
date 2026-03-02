@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Payment.css'
 import { useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
@@ -10,11 +10,6 @@ import axios from 'axios'
 
 const Payment = () => {
     const navigate = useNavigate();
-    useEffect(() => {
-        console.log(Price);
-
-    }, [])
-
     const {
         register,
         handleSubmit,
@@ -22,11 +17,12 @@ const Payment = () => {
         formState: { isSubmitting }
     } = useForm();
     const { state } = useLocation();
-    const { PatientName, Mobile, DoctorName, Department, Price, Date } = state || {};
+    const { PatientName, Mobile, DoctorName, Department, Price, Appoint_Date, email } = state || {};
     const [UPI, setUPI] = useState(false);
     const [expairy, setexpairy] = useState();
     const [card, setcard] = useState(false);
     const [method, setmethod] = useState();
+    const [fault, setfault] = useState();
     const [expyear, setexpyear] = useState();
     const OpenPayment = async (data) => {
         await new Promise((resolve, reject) => {
@@ -35,33 +31,48 @@ const Payment = () => {
                     const newData = {
                         ...data,
                         PaymentMethod: method,
-                        UserID: PatientName
+                        Username: PatientName,
+                        UserID: email,
+                        Paid: "Confirm",
+                        Appoint_Date: Appoint_Date,
+                        Mobile: Mobile,
+                        DoctorName: DoctorName,
+                        Department: Department
+
                     }
                     const CardData = {
                         ...data,
                         PaymentMethod: method,
-                        UserID: PatientName
+                        UserName: PatientName,
+                        UserID: email,
+                        Paid: "Confirm",
+                        Appoint_Date: Appoint_Date,
+                        Mobile: Mobile,
+                        DoctorName: DoctorName,
+                        Department: Department
                     }
                     if (method === 'UPI') {
                         const response = await axios.post('/api/pay', newData);
                         console.log(response.data);
-                        navigate('/myappointment', { state: { Mobile, DoctorName, Department, newData, Date,PatientName } })
+                        if (response.data.success) {
+                            navigate('/myappointment', { state: { email } })
+                        }
 
                         resolve("success");
                     }
                     if (method === 'Debit Card') {
                         const response = await axios.post('/api/pay', CardData);
                         console.log(response.data);
+                        if (response.data.success) {
+                            navigate('/myappointment', { state: { email } })
+                        }
                         resolve("success");
                     }
-
-
                 } catch (error) {
-                    console.log(error.response.data.message);
-
+                    const CodeERROR = error.response.data.message;
+                    setfault(CodeERROR);
+                    reject(error)
                 }
-
-
             }, 3000);
         })
     }
@@ -76,12 +87,13 @@ const Payment = () => {
                 <div className="payments">
                     {UPI && (
                         <div className="upi">
-                            <form onSubmit={handleSubmit(OpenPayment)}>
+                            <form onSubmit={handleSubmit(OpenPayment)} autoComplete='off'>
                                 <label>UPI ID</label>
                                 <input type="text" {...register("UPI_ID")} />
                                 <p>I agree with the Privacy Policy by proceeding with this payment</p>
                                 <h4>INR {Price}(Total Amount Payable)</h4>
                                 <button type="submit">Make Payment</button>
+                                {fault && <p style={{ color: "red" }}>{fault}</p>}
                                 {isSubmitting && (
                                     <div className='makepayment'>
                                         <div className="loading-payment">
@@ -100,14 +112,16 @@ const Payment = () => {
                                 <input type="text" {...register("Debit_Card")} />
                                 <label>Expairy</label>
                                 <div className="exp-cvv">
-                                    <DatePicker
-                                        selected={expairy}
-                                        onChange={(e) => { setexpairy(e) }}
-                                        showMonthYearPicker
-                                        dateFormat='MM'
-                                        placeholderText='Month'
-                                    />
-                                    <DatePicker
+                                    <span>
+                                        <DatePicker
+                                            selected={expairy}
+                                            onChange={(e) => { setexpairy(e) }}
+                                            showMonthYearPicker
+                                            dateFormat='MM'
+                                            placeholderText='Month'
+                                        />
+                                    </span>
+                                    <span>     <DatePicker
                                         selected={expyear}
                                         onChange={(e) => { setexpyear(e) }}
                                         showYearPicker
@@ -115,7 +129,7 @@ const Payment = () => {
                                         minDate={new Date()}
                                         maxDate={new Date(2040, 0, 0)}
                                         placeholderText='Year'
-                                    />
+                                    /></span>
 
                                 </div>
                                 <label>CVV</label>
@@ -125,6 +139,7 @@ const Payment = () => {
                                 <p>I agree with the Privacy Policy by proceeding with this payment</p>
                                 <h4>INR {Price} (Total Amount Payable)</h4>
                                 <button type="submit">Make Payment</button>
+                                {fault && <p style={{ color: "red" }}>{fault}</p>}
                                 {isSubmitting && (
                                     <div className='makepayment'>
                                         <div className="loading-payment">

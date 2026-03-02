@@ -231,17 +231,20 @@
      display: flex;
      gap: 10px;
      align-items: center;
-     flex-wrap: wrap;
+     
  }
 
  .exp-cvv label {
      margin-bottom: 0;
  }
 
- .exp-cvv input,
  .exp-cvv .react-datepicker-wrapper {
-     flex: 1 1 100px;
- }
+    width: 120px;
+}
+
+.exp-cvv .react-datepicker__input-container input {
+    width: 100%;
+}
 
  .cards p {
      font-size: 13px;

@@ -4,6 +4,9 @@ const Pay = new Schema({
         type: String,
 
     },
+    Username: {
+        type: String
+    },
     PaymentMethod: {
         type: String,
     },
@@ -20,7 +23,7 @@ const Pay = new Schema({
             },
             message: "Invalid UPI ID"
         }
-         
+
 
     },
     Debit_Card: {
@@ -33,16 +36,31 @@ const Pay = new Schema({
                 return /^[0-9]{16}$/.test(value)
 
             },
-            message:"Invalid Card Number"
+            message: "Invalid Card Number"
         }
 
     },
-    DebitCard_Password:{
-        type:String,
-        required:function(){
-            return this.PaymentMethod==='Debit Card'
+    DebitCard_Password: {
+        type: String,
+        required: function () {
+            return this.PaymentMethod === 'Debit Card'
         },
-        
+    },
+    Paid: {
+        type: String,
+
+    },
+    Appoint_Date: {
+        type: String
+    },
+    Mobile: {
+        type: String
+    },
+    DoctorName: {
+        type: String
+    },
+    Department: {
+        type: String
     }
 })
 const Payment = model("Payment", Pay);
