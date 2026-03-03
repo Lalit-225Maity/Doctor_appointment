@@ -6,7 +6,8 @@ router.post('/pay', async (req, res) => {
         const { UserID, PaymentMethod, Debit_Card, UPI_ID, DebitCard_Password, Username, Paid, Appoint_Date,
             Mobile,
             DoctorName,
-            Department } = req.body;
+            Department,
+            image,time } = req.body;
         let Payment_Process;
         if (PaymentMethod === 'UPI') {
             if (!(/^[a-zA-Z0-9._-]{2,256}@[a-zA-Z]{2,64}$/.test(UPI_ID))) {
@@ -18,7 +19,9 @@ router.post('/pay', async (req, res) => {
                 PaymentMethod, UserID, Username, Paid, Appoint_Date,
                 Mobile,
                 DoctorName,
-                Department
+                Department,
+                image,
+                time
             })
 
         }
@@ -38,7 +41,9 @@ router.post('/pay', async (req, res) => {
                 PaymentMethod, UserID, Username, Paid, Appoint_Date,
                 Mobile,
                 DoctorName,
-                Department
+                Department,
+                image,
+                time
             });
 
 

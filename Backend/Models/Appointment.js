@@ -24,6 +24,12 @@ const Appointment = new Schema({
     },
     Department: {
         type: String
+    },
+    image:{
+        type:String
+    },
+    time:{
+        type:String
     }
 })
 const ConfirmAppointment = model("Appointment", Appointment);

@@ -4,6 +4,7 @@ import './Home.css'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import HealthAdvise from './HealthAdvise/HealthAdvise'
 const Home = () => {
     const navigate = useNavigate();
     const [tick, settick] = useState(false);
@@ -91,6 +92,9 @@ const Home = () => {
                     <p>Discover an Exciting Career Opportunity – Join Our Leading Team of Doctors and Make a Difference</p>
                     <button>!KNOW MORE</button>
                 </div>
+            </div>
+            <div className="health-advises">
+                <HealthAdvise />
             </div>
         </div>
     )

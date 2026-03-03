@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useLocation } from 'react-router-dom';
 const PersonalDetails = () => {
     const{state}=useLocation();
-    const{appointmentDate,price,department,doctorDetails}=state||{};
+    const{appointmentDate,price,department,doctorDetails,image,time}=state||{};
     const navigate=useNavigate();
     const [choosedate, setchoosedate] = useState();
     const [State, setState] = useState(false)
@@ -24,7 +24,7 @@ const PersonalDetails = () => {
             setTimeout(() => {
                 
                 resolve("success");
-                navigate('/confirm',{state:{appointment:data,appointmentDate:appointmentDate,Price:price,department:department,doctorDetails:doctorDetails}})
+                navigate('/confirm',{state:{appointment:data,appointmentDate:appointmentDate,Price:price,department:department,doctorDetails:doctorDetails,image:image,time:time}})
 
             }, 3000);
         })

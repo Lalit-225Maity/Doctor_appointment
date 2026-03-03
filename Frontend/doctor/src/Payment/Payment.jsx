@@ -17,7 +17,7 @@ const Payment = () => {
         formState: { isSubmitting }
     } = useForm();
     const { state } = useLocation();
-    const { PatientName, Mobile, DoctorName, Department, Price, Appoint_Date, email } = state || {};
+    const { PatientName, Mobile, DoctorName, Department, Price, Appoint_Date, email,image,time } = state || {};
     const [UPI, setUPI] = useState(false);
     const [expairy, setexpairy] = useState();
     const [card, setcard] = useState(false);
@@ -37,7 +37,9 @@ const Payment = () => {
                         Appoint_Date: Appoint_Date,
                         Mobile: Mobile,
                         DoctorName: DoctorName,
-                        Department: Department
+                        Department: Department,
+                        image:image,
+                        time:time
 
                     }
                     const CardData = {
@@ -49,7 +51,9 @@ const Payment = () => {
                         Appoint_Date: Appoint_Date,
                         Mobile: Mobile,
                         DoctorName: DoctorName,
-                        Department: Department
+                        Department: Department,
+                        image:image,
+                        time:time
                     }
                     if (method === 'UPI') {
                         const response = await axios.post('/api/pay', newData);

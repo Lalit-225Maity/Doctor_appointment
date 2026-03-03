@@ -1,0 +1,136 @@
+/* .healthadvise {
+    width: 100%;
+    display: flex;
+    border: 2px solid;
+    justify-content: space-between;
+}
+
+.healthadvise img {
+    width: 20px;
+}
+
+.Diet-Food-Fitness {
+    display: flex;
+    align-items: center;
+    border: 2px solid;
+    padding: 20px;
+    position: relative;
+}
+.fitness{
+    position:absolute;
+    top: 100%;
+}
+.Skin-Hair {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+     border: 2px solid;
+}
+
+.Health-Conditions {
+    align-items: center;
+    display: flex;
+    padding: 20px;
+}
+
+.Pregnancy-Kids-Parenting {
+    align-items: center;
+    display: flex;
+
+    padding: 20px;
+}
+
+.Women-Health {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+} */
+ /* Main Container */
+.healthadvise {
+    width: 100%;
+    display: flex;
+    margin-top: 12px;
+    justify-content: space-between;
+    border: 2px solid black;
+    background-color: #ffffff;
+}
+
+/* All top menu sections */
+.Diet-Food-Fitness,
+.Skin-Hair,
+.Health-Conditions,
+.Pregnancy-Kids-Parenting,
+.Women-Health {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: relative;   /* Important for dropdown */
+    cursor: pointer;
+    gap: 6px;
+    border-right: 1px solid #ddd;
+}
+
+/* Remove last border */
+.Women-Health {
+    border-right: none;
+}
+
+/* Text style */
+.healthadvise p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Arrow image */
+.healthadvise img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ======================
+   Dropdown Common Style
+====================== */
+
+.fitness,
+.skin,
+.health,
+.kids,
+.women {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 230px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* Dropdown items */
+.fitness p,
+.skin p,
+.health p,
+.kids p,
+.women p {
+    padding: 6px 8px;
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Remove last border */
+.fitness p:last-child,
+.skin p:last-child,
+.health p:last-child,
+.kids p:last-child,
+.women p:last-child {
+    border-bottom: none;
+}
+
+/* Hover effect */
+.fitness p:hover,
+.skin p:hover,
+.health p:hover,
+.kids p:hover,
+.women p:hover {
+    background-color: #f2f2f2;
+}

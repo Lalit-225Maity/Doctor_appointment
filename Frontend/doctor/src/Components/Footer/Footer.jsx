@@ -1,9 +1,7 @@
 import React from "react";
 import './Footer.css'
 const Footer = () => {
-
-  const cities = {
-    Delhi: [
+   const  Delhi= [
       "Dentist in Delhi",
       "General Physicians in Delhi",
       "Cardiologist in Delhi",
@@ -14,8 +12,8 @@ const Footer = () => {
       "Urologist in Delhi",
       "Ophthalmologist in Delhi",
       "Sexologist in Delhi",
-    ],
-    Mumbai: [
+    ]
+   const Mumbai= [
       "Dentist in Mumbai",
       "General Physicians in Mumbai",
       "Cardiologist in Mumbai",
@@ -26,8 +24,8 @@ const Footer = () => {
       "Urologist in Mumbai",
       "Ophthalmologist in Mumbai",
       "Sexologist in Mumbai",
-    ],
-    Chennai: [
+    ]
+    const Chennai=[
       "Dentist in Chennai",
       "General Physicians in Chennai",
       "Cardiologist in Chennai",
@@ -38,8 +36,8 @@ const Footer = () => {
       "Urologist in Chennai",
       "Ophthalmologist in Chennai",
       "Sexologist in Chennai",
-    ],
-    Bangalore: [
+    ]
+   const Bangalore=[
       "Dentist in Bangalore",
       "General Physicians in Bangalore",
       "Cardiologist in Bangalore",
@@ -50,8 +48,8 @@ const Footer = () => {
       "Urologist in Bangalore",
       "Ophthalmologist in Bangalore",
       "Sexologist in Bangalore",
-    ],
-  };
+    ]
+
 
   const aboutLinks = [
     "About Us",
@@ -63,39 +61,11 @@ const Footer = () => {
     "Our Fitness Partner: beatXP",
     "Privacy Policy",
     "Editorial Policy"
-  ];
+  ]
 
   return (
     <footer className="footer">
-      <div className="footer-container">
 
-        {/* Cities Section */}
-        {Object.entries(cities).map(([city, services]) => (
-          <div className="footer-column" key={city}>
-            <h3>{city}</h3>
-            <ul>
-              {services.map((service, index) => (
-                <li key={index}>{service}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-
-        {/* About Section */}
-        <div className="footer-column">
-          <h3>Read about Lybrate</h3>
-          <ul>
-            {aboutLinks.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-
-      <div className="footer-bottom">
-        <p>© 2026 Your Company. All rights reserved.</p>
-      </div>
     </footer>
   );
 };

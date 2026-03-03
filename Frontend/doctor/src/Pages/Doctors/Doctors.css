@@ -1,166 +1,171 @@
- 
- 
- 
-.doctors {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-      margin-top: 170px;
-}
+ .doctors {
+     display: flex;
+     padding: 40px 2%;
+     margin-top: 150px;
+     background: linear-gradient(to right, #f8fbff, #eef4ff);
+     min-height: 100vh;
+ }
 
- 
-.doc-sidebar {
-    width: 20%;
-    min-height: 50vh;
-    padding: 15px;
-    background-color: #f5f5f5;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    border-radius: 10px;
-    font-size: 18px;
-}
-.doctor-appointment-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-.doc-details {
-    display: flex;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    gap: 25px;
-    align-items: flex-start;
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
-}
+ .doctor-appointment-details {
+     display: flex;
+     gap: 10px;
+     width: 100%;
+     max-width: 100%;
+    
+ }
 
-.doc-details:hover {
-    transform: translateY(-3px);
-}
-.doc-img img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-}
-.doc-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.doc-info p {
-    font-weight: 700;
-    font-size: 22px;
-}
-.doc-info h5 {
-    font-weight: 700;
-    font-size: 16px;
-    color: #555;
-}
-.radio {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #EDDCC6;
-    margin: 8px 0;
-}
-.radio input[type="radio"] {
-    margin-top: 2px;
-    width: 18px;
-    height: 18px;
-}
-.radio label {
-    font-size: 16px;
-    color: #333;
-      font-weight: 700;
-}
-.contact-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 8px;
-    font-size: 16px;
-   
-}
-.contact-info p {
-    font-weight: 700;
-    font-size: 16px;
-    color: #555;
-}
-.call {
-    padding: 7px 12px;
-    background-color: #576A8F;
-    color: #ffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: 0.2s;
-}
-.call img {
-    width: 16px;
-    height: 16px;
-}
-.call:hover {
-    background-color: #45a049;
-}
-.appoint-doc {
-    display: flex;
-    gap: 15px;
-    margin-top: 12px;
-}
-.appoint-doc button {
-    padding: 7px 15px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    background-color: #008CBA;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    transition: 0.2s;
-}
- 
-.appoint-doc button:hover {
-    background-color: #007bb5;
-}
-@media (max-width: 900px) {
-    .doctors {
-        flex-direction: column;
-    }
 
-    .doc-sidebar {
-        width: 100%;
-        min-height: auto;
-    }
+ .doc-details {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     
+     padding: 25px;
+     height: fit-content;
+     border-radius: 20px;
+     background: #ffffff;
+     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 
-    .doc-details {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+     position: relative;
+     overflow: hidden;
+ }
 
-    .doc-info {
-        align-items: center;
-    }
 
-    .contact-info {
-        flex-direction: column;
-        gap: 8px;
-    }
 
-    .appoint-doc {
-        flex-direction: column;
-        gap: 8px;
-    }
-}
+ /* Doctor Image */
+ .doc-img img {
+     width: 150px;
+     height: 150px;
+     object-fit: cover;
+     border-radius: 50%;
+     border: 4px solid #4f7cff;
+     padding: 4px;
+ }
+
+ /* Doctor Info */
+ .doc-info {
+     text-align: center;
+     margin-top: 15px;
+ }
+
+ .doc-info p {
+     font-size: 22px;
+     font-weight: 700;
+     color: #222;
+ }
+
+ .doc-info h5 {
+     font-size: 15px;
+     color: #666;
+     margin: 4px 0;
+ }
+
+ /* Hospital Radio Box */
+ .radio {
+     margin-top: 12px;
+     padding: 10px 15px;
+     border-radius: 12px;
+     background: #eef2ff;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     font-weight: 600;
+     color: #444;
+ }
+
+ .radio input[type="radio"] {
+     accent-color: #4f7cff;
+     width: 18px;
+     height: 18px;
+ }
+
+ /* Contact Section */
+ .contact-info {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     margin-top: 15px;
+     color: #555;
+ }
+
+ .contact-info p {
+     font-size: 14px;
+
+     font-weight: 800;
+ }
+
+ .call {
+     padding: 8px 16px;
+     background-color: #EDDCC6;
+     border: none;
+     border-radius: 30px;
+     color: #222;
+     font-weight: 600;
+     cursor: pointer;
+     display: inline-flex;
+     align-items: center;
+     gap: 6px;
+     transition: 0.3s ease;
+ }
+
+ .call img {
+     width: 15px;
+ }
+
+ .call:hover {
+     background: linear-gradient(135deg, #3b5ed7, #5c9dff);
+     transform: scale(1.05);
+ }
+
+
+ .appoint-doc {
+     display: flex;
+     gap: 10px;
+     margin-top: 15px;
+ }
+
+ .appoint-doc button {
+     flex: 1;
+     padding: 10px;
+     border-radius: 10px;
+     border: none;
+     cursor: pointer;
+     font-size: 14px;
+     font-weight: 600;
+     transition: 0.3s ease;
+ }
+
+ .appoint-doc button:first-child {
+     background: linear-gradient(135deg, #00c9a7, #00b894);
+     color: white;
+ }
+
+ .appoint-doc button:first-child:hover {
+     background: linear-gradient(135deg, #00b894, #009e7a);
+     transform: scale(1.05);
+ }
+
+
+ .appoint-doc button:last-child {
+     background: #f1f3f9;
+     color: #444;
+ }
+
+ .appoint-doc button:last-child:hover {
+     background: #e2e6f5;
+ }
+
+
+ @media (max-width: 768px) {
+     .doctor-appointment-details {
+         grid-template-columns: 1fr;
+     }
+
+     .appoint-doc {
+         flex-direction: column;
+     }
+
+     .appoint-doc button {
+         width: 100%;
+     }
+ }

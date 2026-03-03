@@ -9,9 +9,7 @@ const Doctors = () => {
 
     return (
         <div className='doctors'>
-            <div className="doc-sidebar">
-
-            </div>
+           
             {doc&&doc.length>0?(
                  <div className="doctor-appointment-details">
                 {doc.map((i) => (
@@ -26,7 +24,7 @@ const Doctors = () => {
                             </div>
                             <div className="contact-info">  <p>Contact Info : {i.phone}</p> <button className='call'><img src="/phone.png" alt="" />CALL</button></div>
                             <div className="appoint-doc">
-                                <button onClick={() => { navigate('/appointment',{state:{doctorDetails:i,department:department}}) }}>Book Appointment</button>
+                                <button onClick={() => { navigate('/appointment',{state:{doctorDetails:i,department:department,image:i.photo}}) }}>Book Appointment</button>
                                 <button>Review</button>
                             </div>
                         </div>
