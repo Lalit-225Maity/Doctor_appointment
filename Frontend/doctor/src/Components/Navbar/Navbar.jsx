@@ -81,7 +81,7 @@ const Navbar = () => {
                     <img src="/ask (1).png" alt="" />
                     <h4>Ask question</h4>
                 </div>
-                <div className="surgery">
+                <div className="surgery" onClick={()=>{navigate('/my-surgery')}}>
                     <img src="/surgery-room (1).png" alt="" />
                     <h4>Plan my Surgery</h4>
                 </div>

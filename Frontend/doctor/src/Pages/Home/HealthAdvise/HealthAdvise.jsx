@@ -11,7 +11,7 @@ const HealthAdvise = () => {
         <div className='healthadvise'>
             <div className="Diet-Food-Fitness" onMouseEnter={() => { setdiet(true) }} onMouseLeave={() => { setdiet(false) }}>
                 <p>Diet, Food & Fitness</p>
-                <img src="/down-arrow (1).png" alt=""   />
+                <img src="/down-arrow (1).png" alt=""   className={diet?"hoverChange":"none"} />
                 {diet && (
                     <div className="fitness">
                         <p>Weight Management</p>
@@ -31,7 +31,7 @@ const HealthAdvise = () => {
             </div>
             <div className="Skin-Hair" onMouseEnter={() => { setskin(true) }} onMouseLeave={() => { setskin(false) }}>
                 <p>Skin & Hair Care</p>
-                <img src="/down-arrow (1).png" alt=""  />
+                <img src="/down-arrow (1).png" alt=""  className={skin?"hoverChange":"none"} />
                 {skin && (
                     <div className="skin">
                         <p>Skin Care</p>
@@ -60,7 +60,7 @@ const HealthAdvise = () => {
             </div>
             <div className="Health-Conditions" onMouseEnter={() => { setcondition(true) }} onMouseLeave={() => { setcondition(false) }}>
                 <p>Health Conditions</p>
-                <img src="/down-arrow (1).png" alt=""  />
+                <img src="/down-arrow (1).png" alt="" className={condition?"hoverChange":"none"} />
                 {condition && (
                     <div className="health">
                         <p>Cancer</p>
@@ -86,7 +86,7 @@ const HealthAdvise = () => {
             </div>
             <div className="Pregnancy-Kids-Parenting" onMouseEnter={() => { setkid(true) }} onMouseLeave={() => { setkid(false) }}>
                 <p>Pregnancy, Kids & Parenting</p>
-                <img src="/down-arrow (1).png" alt=""  />
+                <img src="/down-arrow (1).png" alt="" className={kid?"hoverChange":"none"} />
                 {kid && (
                     <div className="kids">
                         <p>Pregnancy</p>
@@ -110,7 +110,7 @@ const HealthAdvise = () => {
             </div>
             <div className="Women-Health" onMouseEnter={() => { setwomen(true) }} onMouseLeave={() => { setwomen(false) }}>
                 <p>Women's Health</p>
-                <img src="/down-arrow (1).png" alt=""  />
+                <img src="/down-arrow (1).png" alt="" className={women?"hoverChange":"none"} />
                 {women && (
                     <div className="women">
                         <p>Women's Health</p>

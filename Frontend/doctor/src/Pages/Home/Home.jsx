@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import HealthAdvise from './HealthAdvise/HealthAdvise'
+import Question from './Question/Question'
 const Home = () => {
     const navigate = useNavigate();
     const [tick, settick] = useState(false);
@@ -93,9 +94,9 @@ const Home = () => {
                     <button>!KNOW MORE</button>
                 </div>
             </div>
-            <div className="health-advises">
+             
                 <HealthAdvise />
-            </div>
+            <Question/>
         </div>
     )
 }

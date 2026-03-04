@@ -1,61 +1,15 @@
-/* .healthadvise {
-    width: 100%;
-    display: flex;
-    border: 2px solid;
-    justify-content: space-between;
-}
-
-.healthadvise img {
-    width: 20px;
-}
-
-.Diet-Food-Fitness {
-    display: flex;
-    align-items: center;
-    border: 2px solid;
-    padding: 20px;
-    position: relative;
-}
-.fitness{
-    position:absolute;
-    top: 100%;
-}
-.Skin-Hair {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-     border: 2px solid;
-}
-
-.Health-Conditions {
-    align-items: center;
-    display: flex;
-    padding: 20px;
-}
-
-.Pregnancy-Kids-Parenting {
-    align-items: center;
-    display: flex;
-
-    padding: 20px;
-}
-
-.Women-Health {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-} */
- /* Main Container */
 .healthadvise {
     width: 100%;
     display: flex;
-    margin-top: 12px;
-    justify-content: space-between;
-    border: 2px solid black;
+    justify-content: center;
+
+    border-top: 2px solid #F4F0E4;
+    border-bottom: 2px solid #F4F0E4;
+    gap: 20px;
     background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* All top menu sections */
 .Diet-Food-Fitness,
 .Skin-Hair,
 .Health-Conditions,
@@ -63,33 +17,37 @@
 .Women-Health {
     display: flex;
     align-items: center;
-    padding: 20px;
-    position: relative;   /* Important for dropdown */
+    justify-content: center;
+    padding: 10px;
+
+    position: relative;
     cursor: pointer;
-    gap: 6px;
-    border-right: 1px solid #ddd;
+    gap: 15px;
+
 }
 
-/* Remove last border */
 .Women-Health {
     border-right: none;
 }
 
-/* Text style */
+
 .healthadvise p {
     margin: 0;
     font-size: 14px;
 }
 
-/* Arrow image */
+
 .healthadvise img {
-    width: 20px;
-    height: 20px;
+    margin-top: 2px;
+    width: 25px;
+     transition: transform 0.3s ease; 
+
 }
 
-/* ======================
-   Dropdown Common Style
-====================== */
+.hoverChange {
+    transform: rotate(180deg);
+}
+
 
 .fitness,
 .skin,
@@ -99,25 +57,35 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 230px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    z-index: 1000;
+    width: 260px;
+    max-height: 350px;
+    overflow-y: auto;
+
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 10px 0;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+
+
+
+    animation: dropdownFade 0.2s ease-in-out;
 }
 
-/* Dropdown items */
 .fitness p,
 .skin p,
 .health p,
 .kids p,
 .women p {
-    padding: 6px 8px;
-    font-size: 13px;
-    border-bottom: 1px solid #eee;
+    padding: 8px 16px;
+    font-size: 13.5px;
+    color: #444;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
 }
 
-/* Remove last border */
 .fitness p:last-child,
 .skin p:last-child,
 .health p:last-child,
@@ -126,11 +94,24 @@
     border-bottom: none;
 }
 
-/* Hover effect */
 .fitness p:hover,
 .skin p:hover,
 .health p:hover,
 .kids p:hover,
 .women p:hover {
-    background-color: #f2f2f2;
+    background-color: #f5f7fa;
+    color: #0a6ed1;
+    padding-left: 20px;
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
