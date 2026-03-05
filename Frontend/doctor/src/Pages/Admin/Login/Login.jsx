@@ -7,6 +7,7 @@ import './Login.css'
 const Login = () => {
   const [userLogin, setuserLogin] = useState(false);
   const [loginerr, setloginerr] = useState('');
+  const [userName, setuserName] = useState();
   const navigate = useNavigate();
   const {
     register,
@@ -26,6 +27,7 @@ const Login = () => {
           resolve("Success");
 
           const Name = response.data.user.Name;
+          setuserName(Name);
           const Email = response.data.user.Email;
           localStorage.setItem("Name", JSON.stringify(Name));
           localStorage.setItem("Email_ID", JSON.stringify(Email));
@@ -43,8 +45,13 @@ const Login = () => {
   return (
     <div className='login'>
       {userLogin && (
-        <div className="hello">
-          <h4>welcome User</h4>
+        <div className="login-toast">
+          <div className="toast-header">
+            <p>Lybrate</p>
+          </div>
+          <div className="toast-body">
+            <h4>Welcome {userName}</h4>
+          </div>
         </div>
       )}
       <h4>Login</h4>

@@ -7,33 +7,45 @@
     background: linear-gradient(to right, #f5f7fa, #e4f2f7);
     padding: 20px;
 }
-.hello {
+ .login-toast {
     position: fixed;
     top: 30px;
     right: 30px;
-    min-width: 300px;
-    max-width: 360px;
-    padding: 16px 22px;
-    background: linear-gradient(135deg, #06b6d4, #22d3ee); /* modern gradient */
-    color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    z-index: 1000;
-    animation: toastIn 0.5s ease forwards, toastOut 0.5s ease 2.5s forwards; /* slide in + fade out */
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+    animation: slideIn 0.5s ease;
+    overflow: hidden;
+    z-index: 999;
 }
 
-/* Optional Icon inside toast */
-.hello::before {
-    content: "🎉"; /* You can replace with ✅ or 🥳 */
-    font-size: 20px;
-    display: inline-block;
-    margin-right: 10px;
+.toast-header {
+    background: #00a9a5;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.toast-body {
+    padding: 15px;
+}
+
+.toast-body h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* Slide-in Animation */
