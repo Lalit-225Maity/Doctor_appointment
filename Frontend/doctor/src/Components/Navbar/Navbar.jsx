@@ -7,11 +7,13 @@ import axios from 'axios'
 const Navbar = () => {
     const [userhover, setuserhover] = useState(false);
     const [username, setusername] = useState('')
+    const [city, setcity] = useState('');
     const {
         register,
         setValue,
+        handleSubmit,
         reset,
-        formState:{isSubmitting}
+        formState: { isSubmitting }
     } = useForm();
     const navigate = useNavigate();
     const [book, setbook] = useState(false);
@@ -32,6 +34,18 @@ const Navbar = () => {
             console.log(error);
         }
     }
+    const Appoint = async (data) => {
+        await new Promise((resolve, reject) => {
+            setTimeout(() => {
+               const CityADD={
+                ...data,
+                city:city,
+               }
+               console.log(CityADD);
+               
+            }, 3000);
+        })
+    }
     return (
         <div className='navbar'>
             <div className="nav-one">
@@ -51,7 +65,7 @@ const Navbar = () => {
                                     <p>Redeem LybrateCash</p>
                                     <p>My Offers</p>
                                     <p>My Questions</p>
-                                    <p onClick={()=>{navigate('/myappointment')}}>My Appointments</p>
+                                    <p onClick={() => { navigate('/myappointment') }}>My Appointments</p>
                                     <p>My Packages</p>
                                     <p>My Lab Reports</p>
                                     <p>My Orders</p>
@@ -81,7 +95,7 @@ const Navbar = () => {
                     <img src="/ask (1).png" alt="" />
                     <h4>Ask question</h4>
                 </div>
-                <div className="surgery" onClick={()=>{navigate('/my-surgery')}}>
+                <div className="surgery" onClick={() => { navigate('/my-surgery') }}>
                     <img src="/surgery-room (1).png" alt="" />
                     <h4>Plan my Surgery</h4>
                 </div>
@@ -98,13 +112,13 @@ const Navbar = () => {
                             <span onClick={() => { setbook(false); reset() }}> <img src="/close.png" alt="Error" /></span>
                         </div>
                         <div className="appointment-form">
-                            <form >
+                            <form onSubmit={handleSubmit(Appoint)}>
                                 <input type="text" placeholder='Speciality/Symptom/Treatment/Doctor/Clinic' {...register("Symptom")} />
-                                 <button type="submit" >{isSubmitting?"searching....":"search"}</button>
+                                <button type="submit" >{isSubmitting ? "searching...." : "search"}</button>
                             </form>
 
                             <div className="select-city">
-                                <input type="text" placeholder='Enter City' />
+                                <input type="text" placeholder='Enter City' value={city} onChange={(e) => { setcity(e.target.value) }} />
                                 <input type="text" placeholder='Locality' />
                             </div>
                             <h5>Common Issues</h5>

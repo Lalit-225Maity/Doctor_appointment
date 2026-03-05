@@ -94,9 +94,9 @@ const Home = () => {
                     <button>!KNOW MORE</button>
                 </div>
             </div>
-             
-                <HealthAdvise />
-            <Question/>
+
+            <HealthAdvise />
+            <Question />
         </div>
     )
 }

@@ -9,8 +9,9 @@
 
 .question-doctors {
     width: 80%;
+   
      
-    max-width: 1100px;
+    
     
 }
 
@@ -31,14 +32,15 @@
 .questions-doc-ans {
     display: flex;
  
+ flex-wrap: wrap;
  
-    gap: 25px;
+    gap: 15px;
 }
 
 .doctor-suggestions {
     background-color: #ffffff;
     padding: 25px;
-    width: 50%;
+    width: 48%;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     transition: 0.3s ease;
